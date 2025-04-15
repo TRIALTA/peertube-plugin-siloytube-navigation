@@ -41,6 +41,10 @@ async function register({ registerHook, peertubeHelpers }) {
         }
       });
 
+      console.log(isInternalUser);
+      console.log(user);
+      console.log(isLoggedIn);
+
       if(isInternalUser) {
         setInterval(() => {
           console.log("Enabling Search");
