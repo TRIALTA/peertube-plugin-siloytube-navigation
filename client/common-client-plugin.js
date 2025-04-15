@@ -1,10 +1,5 @@
 async function register({ registerHook, peertubeHelpers }) {
-  console.log("[peertube-plugin-siloytube-navigation] Initializing");
-
-  /*
-  if(window.location.href.includes("/videos/browse") || window.location.href.includes("/videos/subscriptions")) {
-    window.location.href = "/my-library/videos";
-  } */
+  console.log("[peertube-plugin-siloytube-navigation] Initializing Hooks");
 
   const disallowedPathsForNormalUsers = [
       '/home',
@@ -23,12 +18,20 @@ async function register({ registerHook, peertubeHelpers }) {
       const isLoggedIn = peertubeHelpers.isLoggedIn();
       const isInternalUser = isLoggedIn && user?.role?.id !== 2;
 
+      console.log(isInternalUser);
+      console.log(user);
+      console.log(isLoggedIn);
+
+      console.log("A");
+
       if(!isLoggedIn) {
         if(!path.includes("/login") && !path.includes("/signup")) {
           window.location.href = "/login";
         }
         return;
       }
+
+      console.log("B");
 
       if(!isInternalUser) {
         disallowedPathsForNormalUsers.forEach(disallowedPath => {
@@ -37,11 +40,10 @@ async function register({ registerHook, peertubeHelpers }) {
             window.location.href = "/my-library/videos";
           }
         });
+        return;
       }
 
-      console.log(isInternalUser);
-      console.log(user);
-      console.log(isLoggedIn);
+      console.log("C");
 
       if(isInternalUser) {
         document.querySelector("#typeahead-container").style.display = "block";
