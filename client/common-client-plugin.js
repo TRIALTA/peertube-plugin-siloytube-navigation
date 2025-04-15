@@ -23,10 +23,6 @@ async function register({ registerHook, peertubeHelpers }) {
       const isLoggedIn = peertubeHelpers.isLoggedIn();
       const isInternalUser = isLoggedIn && user?.role?.id !== 2;
 
-      if(isInternalUser) {
-        return;
-      }
-
       if(!isLoggedIn) {
         if(!path.includes("/login") && !path.includes("/signup")) {
           window.location.href = "/login";
@@ -34,22 +30,21 @@ async function register({ registerHook, peertubeHelpers }) {
         return;
       }
 
-      disallowedPathsForNormalUsers.forEach(disallowedPath => {
-        console.log(path);
-        if(path.includes(disallowedPath)) {
-          window.location.href = "/my-library/videos";
-        }
-      });
+      if(!isInternalUser) {
+        disallowedPathsForNormalUsers.forEach(disallowedPath => {
+          console.log(path);
+          if (path.includes(disallowedPath)) {
+            window.location.href = "/my-library/videos";
+          }
+        });
+      }
 
       console.log(isInternalUser);
       console.log(user);
       console.log(isLoggedIn);
 
       if(isInternalUser) {
-        setInterval(() => {
-          console.log("Enabling Search");
-          document.querySelector("#typeahead-container").style.display = "block";
-        }, 200);
+        document.querySelector("#typeahead-container").style.display = "block";
       }
     }
   });
