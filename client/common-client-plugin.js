@@ -26,6 +26,11 @@ async function register({ registerHook, peertubeHelpers }) {
       }
 
       if(!isInternalUser) {
+        document.querySelector(".other-videos").style.display = "none";
+        setInterval(() => {
+          document.querySelector(".other-videos").style.display = "none";
+        }, 250);
+
         disallowedPathsForNormalUsers.forEach(disallowedPath => {
           console.log(path);
           if (path.includes(disallowedPath)) {
@@ -36,6 +41,7 @@ async function register({ registerHook, peertubeHelpers }) {
       }
 
       if(isInternalUser) {
+        document.querySelector("#typeahead-container").style.display = "block";
         setInterval(() => {
           document.querySelector("#typeahead-container").style.display = "block";
         }, 150);
