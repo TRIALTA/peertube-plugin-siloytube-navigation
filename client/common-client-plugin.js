@@ -41,8 +41,10 @@ async function register({ registerHook, peertubeHelpers }) {
         }
       });
 
-      if(!isInternalUser) {
-        document.querySelector("#typeahead-container").style.display = "none";
+      if(isInternalUser) {
+        setInterval(() => {
+          document.querySelector("#typeahead-container").style.display = "block";
+        }, 200);
       }
     }
   });
