@@ -32,7 +32,8 @@
     "versionbump": "node ./scripts/versionbump.js",
     "prepare": "npm run build",
     "build": "node ./scripts/build.js",
-    "dev": "npm run versionbump && npm run prepare && peertube-cli plugins install --path \"/peertube-plugin-siloytube-navigation\""
+    "dev": "npm run versionbump && npm run prepare && peertube-cli plugins install --path \"/peertube-plugin-siloytube-navigation\"",
+    "deploy": "npm run prepare && peertube-cli plugins install --path \"/peertube-plugin-siloytube-navigation\""
   },
   "staticDirs": {
     "images": "public/images"
