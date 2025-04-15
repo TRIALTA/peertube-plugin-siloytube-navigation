@@ -1,0 +1,47 @@
+{
+  "name": "peertube-plugin-siloytube-navigation",
+  "description": "PeerTube plugin to hide the navigation for several usergroups",
+  "version": "0.0.24",
+  "license": "AGPL-3.0",
+  "author": {
+    "name": "Laura Sofia Heimann",
+    "url": "https://github.com/LauraWebdev"
+  },
+  "bugs": "https://github.com/TRIALTA/peertube-plugin-siloytube-navigation/issues",
+  "clientScripts": [
+    {
+      "script": "dist/common-client-plugin.js",
+      "scopes": [
+        "common"
+      ]
+    }
+  ],
+  "css": [
+    "assets/style.css"
+  ],
+  "engine": {
+    "peertube": ">=1.3.0"
+  },
+  "homepage": "https://github.com/TRIALTA/peertube-plugin-siloytube-navigation",
+  "keywords": [
+    "peertube",
+    "plugin"
+  ],
+  "library": "./main.js",
+  "scripts": {
+    "versionbump": "node ./scripts/versionbump.js",
+    "prepare": "npm run build",
+    "build": "node ./scripts/build.js",
+    "dev": "npm run versionbump && npm run prepare && peertube-cli plugins install --path \"/peertube-plugin-siloytube-navigation\""
+  },
+  "staticDirs": {
+    "images": "public/images"
+  },
+  "translations": {},
+  "devDependencies": {
+    "esbuild": "^0.14.36"
+  },
+  "dependencies": {
+    "uuid": "^11.1.0"
+  }
+}
