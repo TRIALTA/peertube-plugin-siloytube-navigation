@@ -43,6 +43,7 @@ async function register({ registerHook, peertubeHelpers }) {
 
       if(isInternalUser) {
         setInterval(() => {
+          console.log("Enabling Search");
           document.querySelector("#typeahead-container").style.display = "block";
         }, 200);
       }
