@@ -18,20 +18,12 @@ async function register({ registerHook, peertubeHelpers }) {
       const isLoggedIn = peertubeHelpers.isLoggedIn();
       const isInternalUser = isLoggedIn && user?.role?.id !== 2;
 
-      console.log(isInternalUser);
-      console.log(user);
-      console.log(isLoggedIn);
-
-      console.log("A");
-
       if(!isLoggedIn) {
         if(!path.includes("/login") && !path.includes("/signup")) {
           window.location.href = "/login";
         }
         return;
       }
-
-      console.log("B");
 
       if(!isInternalUser) {
         disallowedPathsForNormalUsers.forEach(disallowedPath => {
@@ -43,10 +35,10 @@ async function register({ registerHook, peertubeHelpers }) {
         return;
       }
 
-      console.log("C");
-
       if(isInternalUser) {
-        document.querySelector("#typeahead-container").style.display = "block";
+        setInterval(() => {
+          document.querySelector("#typeahead-container").style.display = "block";
+        }, 150);
       }
     }
   });
