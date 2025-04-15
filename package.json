@@ -1,7 +1,7 @@
 {
   "name": "peertube-plugin-siloytube-navigation",
   "description": "PeerTube plugin to hide the navigation for several usergroups",
-  "version": "0.0.32",
+  "version": "0.0.34",
   "license": "AGPL-3.0",
   "author": {
     "name": "Laura Sofia Heimann",

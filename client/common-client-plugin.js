@@ -18,6 +18,12 @@ async function register({ registerHook, peertubeHelpers }) {
       const isLoggedIn = peertubeHelpers.isLoggedIn();
       const isInternalUser = isLoggedIn && user?.role?.id !== 2;
 
+      // Disable Recommended Videos
+      document.querySelector(".other-videos").style.display = "none";
+      setInterval(() => {
+        document.querySelector(".other-videos").style.display = "none";
+      }, 250);
+
       if(!isLoggedIn) {
         if(!path.includes("/login") && !path.includes("/signup")) {
           window.location.href = "/login";
@@ -26,11 +32,6 @@ async function register({ registerHook, peertubeHelpers }) {
       }
 
       if(!isInternalUser) {
-        document.querySelector(".other-videos").style.display = "none";
-        setInterval(() => {
-          document.querySelector(".other-videos").style.display = "none";
-        }, 250);
-
         disallowedPathsForNormalUsers.forEach(disallowedPath => {
           console.log(path);
           if (path.includes(disallowedPath)) {
